@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bbq</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>  
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <%= link_to "BBQ!", root_path, class: 'navbar-brand' %>
+       
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Link1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link3</a>
+            </li>
+          </ul>  
+        </div>
+      </div>  
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+         
+          <%= yield %>
+        </div>
+        <div class="col-lg-3">
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <footer>
+        <p>&copy; Company 2022</p>
+      </footer>
+
+    </div> <!-- /container -->
+  </body>
+</html>
