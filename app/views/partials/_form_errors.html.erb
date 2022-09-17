@@ -1,7 +1,7 @@
 <% errors = model.errors %>
 
 <% if errors.any? %>
-  <div class="alert alert-danger">
+  <div class="alert alert-danger" role="alert">
     <div class="lead buffer-bottom">
       В вашей форме <%= errors.count %> ошибок
     </div>
