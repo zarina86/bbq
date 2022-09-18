@@ -1,15 +1,16 @@
 <div class="col-sm-6 col-md-4">
-  <div class="thumbnail">
+  <div class="buffer-top">
+    <div class="thumbnail">
+      <%= content_tag 'div', '', class: 'event-background',
+        style: "background-image: url(#{asset_path('event_thumb.jpg')})" %>
 
-    <%= content_tag 'div', '', class: 'event-background',
-      style: "background-image: url(#{asset_path('event_thumb.jpg')})" %>
-
-    <div class="thumbnail-inner event-info-inner">
-      <div class="caption text-center">
-        <div class="event-description">
-          <h3><%= link_to event.title, event_path(event) %></h3>
-          <h5><%= event.datetime %></h5>
-          <div class="buffer-both"><%= event.address %></div>
+      <div class="thumbnail-inner event-info-inner">
+        <div class="caption text-center">
+          <div class="event-description">
+            <h3><%= link_to event.title, event_path(event) %></h3>
+            <h5><%= event.datetime %></h5>
+            <div class="buffer-both"><%= event.address %></div>
+          </div>
         </div>
       </div>
     </div>

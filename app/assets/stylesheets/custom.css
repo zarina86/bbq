@@ -12,6 +12,10 @@
   margin-bottom: 20px;
 }
 
+.buffer-bottom-forms {
+  margin-bottom: 18px;
+}
+
 .buffer-both {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -42,4 +46,9 @@
 
 .thumbnail-inner {
   padding: 20px 4px 4px;
+}
+
+/* Font-weights for forms */
+.label-custom {
+  font-weight: bold !important;
 }
