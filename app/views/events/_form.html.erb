@@ -1,4 +1,4 @@
-<%= form_for(@event) do |f| %>
+<%= form_for(@event, data: {turbo: false} ) do |f| %>
   <%= render partial: 'partials/form_errors', locals: {model: @event} %>
 
   <div class="form-group">
