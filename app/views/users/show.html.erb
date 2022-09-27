@@ -4,21 +4,23 @@
   <%= image_tag user_avatar(@user) %>
   
   <% if @user == current_user %>
-    <p class="buffer-top">
+    <p class="buffer-bottom">
       <%= link_to "Редактировать профиль", edit_registration_path(@user),
        class: 'btn btn-outline-primary' %>
     </p>
   <% end %>
   <div class="row">
     <div class="col-md-12">
-      <% if @user.events.any? %>
-        <h3>Организовал:</h3>
-        <div class="row">
-          <%= render partial: 'events/event', collection: @user.events %>
-        </div>
-      <% else %>
-        <p class="buffer-top">Пользователь пока не организовал ни одного события</p>
-      <% end %>
+      <div class="buffer-top">
+        <% if @user.events.any? %>
+          <h3>Организовал:</h3>
+            <div class="row">
+              <%= render partial: 'events/event', collection: @user.events %>
+            </div>
+        <% else %>
+          <p class="buffer-top">Пользователь пока не организовал ни одного события</p>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

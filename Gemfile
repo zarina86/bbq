@@ -20,9 +20,11 @@ gem "cssbundling-rails"
 
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
-gem "bootsnap", require: false
+gem "bootsnap" # require: false
 
 gem "devise", github: "heartcombo/devise", ref: "f8d1ea90bc3"
+
+gem "devise-i18n"
 
  gem "sassc-rails"
 
@@ -33,4 +35,3 @@ end
 group :development do
   gem "web-console"
 end
-

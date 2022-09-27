@@ -5,7 +5,7 @@
     <i class="bi-exclamation-octagon-fill"></i>
       <strong class="mx-1">Error!</strong>
         <div class= "buffer-bottoms-forms">
-          <h5><small>В вашей форме <%= errors.count %> ошибок:</small><h5>
+          <h5><small><%= I18n.t("errors.messages.record_invalid", count: model.errors.count) %> :</small><h5>
         </div>
 
         <ul>

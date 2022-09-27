@@ -8,15 +8,21 @@
         <div class="col-md-6">
           <div class="event-description">
             <h1><%= @event.title %></h1>
-            <h3><%= @event.datetime %></h3>
+            <h3><%= l @event.datetime, format: :short %></h3>
             <h4><small><%= link_to @event.address,
                 "https://yandex.ru/maps/?text=#{@event.address}" %></small></h4>
             <p><%= @event.description %></p>
           </div>
 
           <div class="buffer-top">
-            <%= link_to 'Изменить', edit_event_path(@event),
-              class: 'btn btn-primary' %>
+            <% if current_user == @event.user %>
+              <%= link_to 'Изменить', edit_event_path(@event),
+                class: 'btn btn-primary' %>
+              
+              <%= button_to 'Удалить', event_path(@event), method: :delete,
+                form: {data: {turbo_confirm: "Вы точно хотите удалить это меропирятие?"}},
+                class: 'btn btn-dark' %>
+            <% end %>
           </div>
         </div>
       </div>
