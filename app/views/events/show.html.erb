@@ -16,15 +16,17 @@
 
           <div class="buffer-top">
             <% if current_user == @event.user %>
-              <div class="btn-group">
-                <div class="col-sm-7"> 
-                  <%= link_to 'Изменить', edit_event_path(@event),
-                    class: 'btn btn-primary' %>
-                </div>
-                <div class="col-sm-7">  
-                  <%= button_to 'Удалить', event_path(@event), method: :delete,
-                    form: {data: {turbo_confirm: "Вы точно хотите удалить это меропирятие?"}},
-                    class: 'btn btn-primary' %>
+              <div class="buffer-bottom-forms"> 
+                <div class="btn-group">
+                  <div class="col-sm-7"> 
+                    <%= link_to 'Изменить', edit_event_path(@event),
+                      class: 'btn btn-primary' %>
+                  </div>
+                  <div class="col-sm-7">                  
+                    <%= button_to 'Удалить', event_path(@event), method: :delete,
+                      form: { data: { turbo_confirm: I18n.t(:delete_message) }},
+                      class: 'btn btn-primary' %>
+                  </div>
                 </div>
               </div>                
             <% end %>
