@@ -5,8 +5,8 @@ ru:
     models:
       user: 'Пользователь'
       event: 'Событие'
-    
-
+      comment: 'Коментарий'
+      subscription: 'Подписка'
     # Перевод названий аттрибутов моделей
     attributes:
       user:
@@ -19,10 +19,17 @@ ru:
         address: 'Место проведения'
         datetime: 'Дата и время'
         description: 'Описание'
+      comment:
+        body: 'Текст'
+        user_name: 'Имя пользователя'
+      subscription:
+        user_name: 'Имя пользователя'
+        user_email: 'Email пользователя'
 
     errors:
       messages:
         blank: ' - данное поле не может быть пустым' 
+        taken: ' - данные уже заняты'   
         restrict_dependent_destroy:
           has_one: 'Невозможно удалить запись, так как существует зависимость: %{record}'
           has_many: 'Невозможно удалить запись, так как существуют зависимости: %{record}'
@@ -35,6 +42,15 @@ ru:
       destroyed: 'Вы удалили мероприятие :('
     users:
       updated: 'Вы обновили свой профиль'
+      destroyed: 'Вы удалили свой профиль'
+    comments:
+      destroyed: 'Комментарий удален'
+      created: 'Ваш комментарий добавлен'
+      error: 'Ошибка с комментарием'
+    subscriptions:
+      created: 'Вы подписаны на это событие'
+      destroyed: 'Участник отписан'
+      error: 'Подписка/отписка не сработала'
 
   form_errors_count:         
     one: 'В вашей форме %{count} ошибка'
@@ -43,11 +59,32 @@ ru:
     other: 'В вашей форме %{count} ошибки'
   
   delete_message: 'Вы точно хотите удалить это мероприятие?'
-      
+  
+  delete_user: 'Вы уверены?'
+
+  button:
+    delete: 'Удалить'
+    edit: 'Изменить'
+    subscribe: 'Подписаться'
+    send: 'Отправить'
+    save: 'Сохранить'
+    back: 'Вернуться'
+    update: 'Обновить'
+    sign_up: 'Зарегистрироваться'
+    sign_in: 'Войти'
+    
   # Перевод названия приложения и компании-разработчика
   app:
     name: 'Шашлыки'
     company: 'Хороший программист'
+  
+  comments:
+    comment:
+      destroy_confirm: 'Вы уверены, что хотите удалить этот комментарий?'
+
+  subscriptions:
+    subscription:
+      destroy_confirm: 'Вы уверены, что хотите удалить эту подписку?'
   
   date:
     abbr_day_names:
@@ -107,3 +144,4 @@ ru:
       long: "%d %B %Y, %H:%M"
       short: "%d %B, %H:%M"
     pm: вечера  
+    

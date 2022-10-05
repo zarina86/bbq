@@ -1,0 +1,12 @@
+<span class="subscription">
+  <% if subscription.user.present? %>
+    <%= render partial: 'users/user', object: subscription.user %>
+  <% else %>
+    <em><%= subscription.user_name %></em>
+  <% end %>
+  <% if current_user_can_edit?(subscription) %>
+    <%= button_to I18n.t('button.delete'), event_subscription_path(subscription.event, subscription), 
+      method: :delete, form: { data: { turbo_confirm: I18n.t(:destroy_confirm) }},
+      class: 'btn btn-primary' %>
+  <% end %>
+</span>

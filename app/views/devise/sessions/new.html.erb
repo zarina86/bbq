@@ -14,7 +14,7 @@
   <div class="buffer-bottom-forms">
     <div class="row">
       <div class="col-7">
-        <%= f.label :"Пароль", class:"label-custom" %><br />
+        <%= f.label :password, class:"label-custom" %><br />
         <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
         <div class="form-text">Длина пароля должна быть не менее 6 символов</div>
       </div>
@@ -25,13 +25,13 @@
     <div class="buffer-bottom-forms">
       <div class="field">
         <%= f.check_box :remember_me %>
-        <%= f.label :"Запомнить меня" %>
+        <%= f.label :remember_me %>
       </div>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Войти", class: "btn btn-primary btn" %>
+    <%= f.submit I18n.t("button.sign_in"), class: "btn btn-primary btn" %>
   </div>
 <% end %>
 

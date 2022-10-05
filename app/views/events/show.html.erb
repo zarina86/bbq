@@ -3,27 +3,27 @@
     <div class="col-md-12">
       <%= content_tag 'div', '', class: 'event-background',
         style: "background-image: url(#{asset_path('event.jpg')})" %>
-
+      
       <div class="event-info-inner row">
         <div class="col-md-6">
           <div class="event-description">
             <h1><%= @event.title %></h1>
-            <h3><%= l @event.datetime, format: :short %></h3>
+            <h3><%= I18n.l(@event.datetime, format: :short) %></h3>
             <h4><small><%= link_to @event.address,
                 "https://yandex.ru/maps/?text=#{@event.address}" %></small></h4>
             <p><%= @event.description %></p>
           </div>
 
           <div class="buffer-top">
-            <% if current_user == @event.user %>
-              <div class="buffer-bottom-forms"> 
+            <% if current_user_can_edit?(@event) %>
+              <div class="buffer-bottom"> 
                 <div class="btn-group">
                   <div class="col-sm-7"> 
-                    <%= link_to 'Изменить', edit_event_path(@event),
+                    <%= link_to I18n.t("button.edit"), edit_event_path(@event),
                       class: 'btn btn-primary' %>
                   </div>
                   <div class="col-sm-7">                  
-                    <%= button_to 'Удалить', event_path(@event), method: :delete,
+                    <%= button_to I18n.t("button.delete"), event_path(@event), method: :delete,
                       form: { data: { turbo_confirm: I18n.t(:delete_message) }},
                       class: 'btn btn-primary' %>
                   </div>
@@ -31,6 +31,53 @@
               </div>                
             <% end %>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="d-flex justify-content-between w-100">
+    <div class="row">
+      <div class="col-md-12 col-sm-6">
+        <div class="buffer-top">
+          <h4 class="text-center"><small>Написать комментарий:</small></h4>
+          <%= render partial: 'comments/form',
+          locals: {comment: @new_comment || @event.comments.build} %>
+      
+          <div class="buffer-both">
+            <h4 class="text-center"><small>Комментарии:</small></h4>
+            <%= render partial: 'comments/comment', collection: @event.comments.except(@new_comment) %>
+          </div>
+        </div>   
+      </div>
+    </div>
+ 
+    <div class="row">
+      <div class="col-md-8">
+        <div class="buffer-top">
+          <% unless current_user_can_edit?(@event) %>
+            <div class>
+              <h4 class="text-center"><small>Зовет:</small></h4>
+              <p class="text-center"><%= render partial: 'users/user', object: @event.user %></p>
+            </div>
+            <div class>
+              <h4 class="text-center"><small>Пойдут:</small></h4>
+              <div>
+                <p>
+                  <%= render partial: 'subscriptions/subscription',
+                    collection: @event.subscriptions.except(@new_subscription) %>
+                </p>
+              </div>
+            </div>
+            <div class>
+              <h4 class="text-center"><small>Я пойду:</small></h4>
+              <div>
+                <%= render partial: 'subscriptions/form', locals: {
+                  subscription: @new_subscription || @event.subscriptions.build
+                } %>
+              </div>
+            </div> 
+          <% end %>
         </div>
       </div>
     </div>

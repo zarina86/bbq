@@ -1,0 +1,18 @@
+<div class="buffer-both">
+  <p><%= comment.body %></p>
+  <p>
+    <span>
+      <% if comment.user.present? %>
+        <%= render partial: 'users/user', object: comment.user %>
+      <% else %>
+        <em><strong><%= comment.user_name %></strong></em>
+      <% end %>
+    </span>
+    <em><%= l comment.created_at, format: :short %></em>
+    <% if current_user_can_edit?(comment) %>
+      <%= button_to I18n.t('button.delete'), event_comment_path(comment.event, comment), method: :delete,
+      form: { data: { turbo_confirm: I18n.t('comments.comment.destroy_confirm') }},
+      class: 'btn btn-primary' %>
+    <% end %>  
+  </p>
+</div>

@@ -15,7 +15,7 @@
   <div class="buffer-bottom-forms">
     <div class="row">
       <div class="col-7">
-        <%= f.label :"Имя", class:"label-custom" %><br />
+        <%= f.label :name, class:"label-custom" %><br />
         <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
       </div>
     </div>
@@ -24,7 +24,7 @@
   <div class="buffer-bottom-forms">
     <div class="row">
       <div class="col-7">
-        <%= f.label :"Пароль", class:"label-custom" %>
+        <%= f.label :password, class:"label-custom" %>
         <% if @minimum_password_length %>
         <em>(не менее <%= @minimum_password_length %> символов)</em>
         <% end %><br />
@@ -36,7 +36,7 @@
   <div class="buffer-bottom-forms">
     <div class="row">
       <div class="col-7">
-        <%= f.label :"Подтверждение пароля", class:"label-custom" %>
+        <%= f.label :password_confirmation, class:"label-custom" %>
         <br />
         <%= f.password_field :password_confirmation, autocomplete: "password_confirmation",  class: "form-control"%>
       </div>
@@ -44,7 +44,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Зарегистрироваться", class:"btn btn-primary" %>
+    <%= f.submit I18n.t('button.sign_up'), class:"btn btn-primary" %>
   </div>
 <% end %>
 

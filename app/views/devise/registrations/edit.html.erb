@@ -19,7 +19,7 @@
   <div class="buffer-bottom-forms">
     <div class="row">
       <div class="col-7">
-        <%= f.label :"Имя", class:"label-custom" %><br />
+        <%= f.label :name, class:"label-custom" %><br />
         <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
       </div>
     </div>
@@ -32,7 +32,7 @@
   <div class="buffer-bottom-forms">
     <div class="row">
       <div class="col-7">
-        <%= f.label :"Пароль", class:"label-custom" %><br />
+        <%= f.label :password, class:"label-custom" %><br />
         <i>(оставьте пустое поле если не хотите ничего менять)</i><br />
         <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
         <% if @minimum_password_length %>
@@ -45,7 +45,7 @@
   <div class="buffer-bottom-forms">
     <div class="row">
       <div class="col-7">
-        <%= f.label :"Подтверждение пароля", class:"label-custom" %><br />
+        <%= f.label :password_confirmation, class:"label-custom" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
       </div>
     </div>
@@ -54,23 +54,25 @@
   <div class="buffer-bottom-forms">
     <div class="row">
       <div class="col-7">
-        <%= f.label :"Текущий пароль", class:"label-custom" %><br /> 
+        <%= f.label :current_password, class:"label-custom" %><br /> 
         <i>(введите текущий пароль для подтверждения изменений)</i><br />
-        <%= f.password_field :current_password, autocomplete: "current-password" %>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
       </div>
     </div>
   </div>
   
   <div class="buffer-bottom-forms">
     <div class="actions">
-      <%= f.submit "Обновить", class:"btn btn-primary" %>
+      <%= f.submit I18n.t("button.update"), class:"btn btn-primary" %>
     </div>
   </div>
 <% end %>
 
 <h3>Удалить аккаунт</h3>
 
-<p> Жаль что Вы покидаете нас!<%= button_to "Удалить", registration_path(resource_name),
-   data: { confirm: "Вы уверены?" }, method: :delete, class:"btn btn-primary" %></p>
+<p> Жаль что Вы покидаете нас!<%= button_to I18n.t("button.delete"), registration_path(resource_name),
+form: { data: { turbo_confirm: I18n.t(:delete_user) }}, method: :delete, class:"btn btn-primary" %></p>
 
-<%= link_to "Вернуться", :back %>
+<div class=buffer-bottom-forms">
+  <%= link_to I18n.t("button.back"), :back %>
+</div>
