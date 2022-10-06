@@ -53,22 +53,22 @@
     </div>
  
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-9">
         <div class="buffer-top">
+          <div class>
+            <h4 class="text-center"><small>Зовет:</small></h4>
+            <p class="text-center"><%= render partial: 'users/user', object: @event.user %></p>
+          </div>
+          <div class>
+            <h4 class="text-center"><small>Пойдут:</small></h4>
+            <div>
+              <p>
+                <%= render partial: 'subscriptions/subscription',
+                  collection: @event.subscriptions.except(@new_subscription) %>
+              </p>
+            </div>
+          </div>
           <% unless current_user_can_edit?(@event) %>
-            <div class>
-              <h4 class="text-center"><small>Зовет:</small></h4>
-              <p class="text-center"><%= render partial: 'users/user', object: @event.user %></p>
-            </div>
-            <div class>
-              <h4 class="text-center"><small>Пойдут:</small></h4>
-              <div>
-                <p>
-                  <%= render partial: 'subscriptions/subscription',
-                    collection: @event.subscriptions.except(@new_subscription) %>
-                </p>
-              </div>
-            </div>
             <div class>
               <h4 class="text-center"><small>Я пойду:</small></h4>
               <div>
