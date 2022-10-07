@@ -1,0 +1,11 @@
+<%# Паршал для вывода отдельной фотографии %>
+<div class="buffer-bottom-forms">
+  <%= link_to image_tag(photo.photo.thumb.url), photo.photo.url %>
+  <%# Показываем не только фотку, но и юзаре, который её добавил %>
+  Добавил <%= render partial: 'users/user', object: photo.user %>
+</div>
+<div class="buffer-bottom-forms">
+  <%= button_to I18n.t('button.delete'), event_photo_path(photo.event, photo), method: :delete,
+    form: { data: { turbo_confirm: I18n.t('photos.photo.destroy_confirm') }},
+    class: 'btn btn-primary' %>
+</div>

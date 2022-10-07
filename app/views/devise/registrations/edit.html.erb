@@ -19,6 +19,16 @@
   <div class="buffer-bottom-forms">
     <div class="row">
       <div class="col-7">
+        <%= f.label :avatar, class:"label-custom" %><br />
+        <p><%= image_tag(@user.avatar.thumb.url) if @user.avatar? %></p>
+        <%= f.file_field :avatar, autofocus: true, autocomplete: "name" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="buffer-bottom-forms">
+    <div class="row">
+      <div class="col-7">
         <%= f.label :name, class:"label-custom" %><br />
         <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
       </div>

@@ -1,8 +1,9 @@
 <div class="event">
   <div class="event-info row">
     <div class="col-md-12">
-      <%= content_tag 'div', '', class: 'event-background',
-        style: "background-image: url(#{asset_path('event.jpg')})" %>
+      <%= content_tag 'div', '', 
+        class: 'event-background',
+        style: "background-image: url(#{event_photo(@event)})"%>
       
       <div class="event-info-inner row">
         <div class="col-md-6">
@@ -39,14 +40,24 @@
   <div class="d-flex justify-content-between w-100">
     <div class="row">
       <div class="col-md-12 col-sm-6">
+        <div>
+          <div>
+            <%= render partial: 'photos/photo', collection: @event.photos.except(@new_photo) %>
+          </div>
+          <div>
+            <%= render partial: 'photos/form', 
+              locals: {photo: @new_photo || @event.photos.build} %>
+          </div>
+        </div>
         <div class="buffer-top">
           <h4 class="text-center"><small>Написать комментарий:</small></h4>
           <%= render partial: 'comments/form',
-          locals: {comment: @new_comment || @event.comments.build} %>
+            locals: {comment: @new_comment || @event.comments.build} %>
       
           <div class="buffer-both">
             <h4 class="text-center"><small>Комментарии:</small></h4>
-            <%= render partial: 'comments/comment', collection: @event.comments.except(@new_comment) %>
+            <%= render partial: 'comments/comment', 
+              collection: @event.comments.except(@new_comment) %>
           </div>
         </div>   
       </div>

@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
   has_many :subscribers, through: :subscriptions, source: :user
+  has_many :photos, dependent: :destroy
   
   validates :user, presence: true
   # Заголовок должен быть, и не может быть длиннее 255 букв
@@ -13,4 +14,8 @@ class Event < ApplicationRecord
   # Также у события должны быть заполнены место и время проведения
   validates :address, presence: true
   validates :datetime, presence: true
+
+  def visitors
+    (subscribers + [user]).uniq
+  end
 end
