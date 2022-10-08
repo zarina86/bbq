@@ -28,7 +28,7 @@ class PhotosController < ApplicationController
       @photo.destroy
     else
       # Если нет — сообщаем ему
-      message = {alert: I18n.t('controllers.photos.error')}
+      message = {alert: I18n.t('controllers.photos.destroy_error')}
     end
 
     # В любом случае редиректим юзера на событие

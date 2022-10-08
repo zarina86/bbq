@@ -29,8 +29,14 @@ ru:
         user_email: 'Email пользователя'
       photo:
         photo: 'Фотография'
+        user: 'Пользователь'
 
     errors:
+      models:
+        photo:
+          attributes:
+            user:
+              required: ' - для загрузки фотографий авторизуйтесь'
       messages:
         blank: ' - данное поле не может быть пустым' 
         taken: ' - данные уже заняты'
@@ -61,6 +67,7 @@ ru:
       created: 'Вы добавилии фотографии к событию'
       destroyed: 'Вы удалили фотографию'
       error: 'Что-то не так с фотографией'
+      destroy_error: 'Вы не можете удалить данную фотографию.'
 
   form_errors_count:         
     one: 'В вашей форме %{count} ошибка'
