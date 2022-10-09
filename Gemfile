@@ -20,6 +20,10 @@ gem "cssbundling-rails"
 
 gem "carrierwave"
 
+gem "carrierwave-aws"
+
+gem "aws-sdk-rails"
+
 gem "rmagick"
 
 gem "fog-aws"
