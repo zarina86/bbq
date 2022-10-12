@@ -36,7 +36,9 @@ gem "devise", github: "heartcombo/devise", ref: "f8d1ea90bc3"
 
 gem "devise-i18n"
 
- gem "sassc-rails"
+gem "mailjet"
+
+gem "sassc-rails"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

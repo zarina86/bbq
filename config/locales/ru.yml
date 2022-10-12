@@ -68,6 +68,21 @@ ru:
       destroyed: 'Вы удалили фотографию'
       error: 'Что-то не так с фотографией'
       destroy_error: 'Вы не можете удалить данную фотографию.'
+    event_mailer:
+      comment:
+        title: 'Новый комментарий'
+        author: 'Автор'
+        event: 'Событие'
+        datetime: 'Состоится'
+        owner: 'Организатор'
+      subscription:
+        title: 'Новая подписка'
+        name: 'Имя'
+        email: 'Email'
+        author: 'Автор'
+        event: 'Событие'
+        datetime: 'Состоится'
+        owner: 'Организатор'
 
   form_errors_count:         
     one: 'В вашей форме %{count} ошибка'
