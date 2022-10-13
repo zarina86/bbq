@@ -1,7 +1,6 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  Rails.application.routes.default_url_options[:host] ='stormy-mountain-96906.herokuapp.com'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -19,7 +18,7 @@ Rails.application.configure do
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
-  # config.require_master_key = true
+  config.require_master_key = true
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
@@ -89,10 +88,12 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  # Mailjet mailer
+  config.action_mailer.delivery_method = :mailjet
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  
-   # Mailjet mailer
-  config.action_mailer.default_url_options = { host: 'https://stormy-mountain-96906.herokuapp.com'}
-  config.action_mailer.delivery_method = :mailjet
+  # Devise mailer
+  config.action_mailer.default_url_options = { host: 'https://stormy-mountain-96906.herokuapp.com' }
+  # Configure host for URL helpers.
+  Rails.application.routes.default_url_options = { host: 'stormy-mountain-96906.herokuapp.com' }
 end

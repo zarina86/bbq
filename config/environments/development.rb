@@ -1,6 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  routes.default_url_options[:host] = 'localhost:3000'
   config.cache_classes = false
 
   config.eager_load = false
