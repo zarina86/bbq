@@ -40,7 +40,7 @@
           <% if notice %>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
               <i class="bi-exclamation-octagon-fill"></i>
-              <strong class="mx-1">Success!</strong>
+              <strong class="mx-1"><%= I18n.t('exclamation.success') %></strong>
                 <%= notice %></p>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -48,7 +48,7 @@
           <% if alert %>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
               <i class="bi-exclamation-octagon-fill"></i>
-              <strong class="mx-1">Error!</strong>
+              <strong class="mx-1"><%= I18n.t('exclamation.error') %></strong>
                 <%= alert %>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>    

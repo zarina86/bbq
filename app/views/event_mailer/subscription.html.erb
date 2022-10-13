@@ -1,14 +1,14 @@
-<h1><%= t '.title' %></h1>
-<p><%= t '.name' %>: <strong><%= @name %></strong></p>
-<p><%= t '.email' %>: <strong><%= link_to @email, "mailto:#{@email}" %></strong></p>
+<h1><%= I18n.t('controllers.event_mailer.subscription.title') %></h1>
+<p><%= I18n.t('controllers.event_mailer.subscription.name') %>: <strong><%= @name %></strong></p>
+<p><%= I18n.t('controllers.event_mailer.subscription.email') %>: <strong><%= link_to @email, "mailto:#{@email}" %></strong></p>
 <hr/>
 
-<%= t '.event' %>
+<%= I18n.t('controllers.event_mailer.subscription.event') %>
 
 <h3><%= @event.title %></h3>
 
-<%= t '.datetime' %>
+<%= I18n.t('controllers.event_mailer.subscription.datetime') %>
 <h4><%= l @event.datetime %></h4>
 
-<%= t '.owner' %>
+<%= I18n.t('controllers.event_mailer.subscription.owner') %>
 <h4><%= @event.user.name %></h4>

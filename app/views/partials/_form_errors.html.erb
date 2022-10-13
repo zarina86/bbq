@@ -3,7 +3,7 @@
 <% if errors.any? %>   
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <i class="bi-exclamation-octagon-fill"></i>
-      <strong class="mx-1">Error!</strong>
+      <strong class="mx-1"><%= I18n.t('exclamation.error') %></strong>
         <div class= "buffer-bottoms-forms">
           <h5><small><%= I18n.t :form_errors_count, count: errors.count %> :</small><h5>
         </div>

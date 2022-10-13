@@ -1,11 +1,13 @@
-<%= t '.title' %>
-----
+<% unless current_user_can_edit?(comment) %>
+  <%= I18n.t('controllers.event_mailer.comment.title') %>
+  ----
 
-<%= @comment.body %>
+  <%= @comment.body %>
 
-<%= t '.author' %>: <%= @comment.user_name %>
+  <%= I18n.t('controllers.event_mailer.comment.author') %>: <%= @comment.user_name %>
 
---------------------------------
-<%= t '.event' %>: <%= @event.title %>
-<%= t '.datetime' %>: <%= l @event.datetime %>
-<%= t '.owner' %>: <%= @event.user.name %>
+  --------------------------------
+  <%= I18n.t('controllers.event_mailer.comment.event') %>: <%= @event.title %>
+  <%= I18n.t('controllers.event_mailer.comment.datetime') %>: <%= l @event.datetime %>
+  <%= I18n.t('controllers.event_mailer.comment.owner') %>: <%= @event.user.name %>
+<% end %>

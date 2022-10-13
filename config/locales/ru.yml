@@ -90,6 +90,10 @@ ru:
     many: 'В вашей форме %{count} ошибок'
     other: 'В вашей форме %{count} ошибки'
   
+  exclamation:
+    error: 'Ошибка!'
+    success: 'Успех!'
+    
   delete_message: 'Вы точно хотите удалить это мероприятие?'
   
   delete_user: 'Вы уверены?'
