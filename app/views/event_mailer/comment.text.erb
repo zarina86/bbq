@@ -1,4 +1,4 @@
-<% unless current_user_can_edit?(comment) %>
+<% unless current_user_can_edit?(@comment) %>
   <%= I18n.t('controllers.event_mailer.comment.title') %>
   ----
 
