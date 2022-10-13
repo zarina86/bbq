@@ -1,6 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  Rails.application.routes.default_url_options[:host] ='stormy-mountain-96906.herokuapp.com'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -92,7 +93,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
    # Mailjet mailer
-  config.action_mailer.delivery_method = :mailjet_api
-   
   config.action_mailer.default_url_options = { host: 'https://stormy-mountain-96906.herokuapp.com'}
+  config.action_mailer.delivery_method = :mailjet
 end
