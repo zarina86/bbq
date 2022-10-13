@@ -42,7 +42,7 @@ Rails.application.configure do
   # Mailjet mailer
   config.action_mailer.delivery_method = :mailjet
   # Devise mailer
-  config.action_mailer.default_url_options = { host: 'stormy-mountain-96906.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'bbqev.herokuapp.com' }
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
   # config.action_cable.url = "wss://example.com/cable"
