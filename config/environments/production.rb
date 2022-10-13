@@ -92,7 +92,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
    # Mailjet mailer
-   config.action_mailer.delivery_method = :mailjet_api
+  config.action_mailer.delivery_method = :mailjet_api
    
-   config.action_mailer.default_url_options = { host: ENV['MAILER_URL'] }
+  config.action_mailer.default_url_options = { host: 'https://stormy-mountain-96906.herokuapp.com'}
 end
