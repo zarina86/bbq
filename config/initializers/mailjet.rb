@@ -9,4 +9,5 @@ Mailjet.configure do |config|
   # If you're only using the gem to send emails, then you can safely set it to this version.
   # Otherwise, you can remove the dedicated line into config/initializers/mailjet.rb.
   config.api_version = 'v3.1'
+  config.end_point = 'https://api.mailjet.com'
 end

@@ -1,4 +1,3 @@
-<% unless current_user_can_edit?(@comment) %>
   <%= I18n.t('controllers.event_mailer.comment.title') %>
   ----
 
@@ -10,4 +9,3 @@
   <%= I18n.t('controllers.event_mailer.comment.event') %>: <%= @event.title %>
   <%= I18n.t('controllers.event_mailer.comment.datetime') %>: <%= l @event.datetime %>
   <%= I18n.t('controllers.event_mailer.comment.owner') %>: <%= @event.user.name %>
-<% end %>

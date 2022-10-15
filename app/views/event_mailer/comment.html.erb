@@ -1,4 +1,3 @@
-<% unless current_user_can_edit?(@comment) %>
   <h1><%= I18n.t('controllers.event_mailer.comment.title') %></h1>
   <p><%= @comment.body %></p>
   <p><%= I18n.t('controllers.event_mailer.comment.author') %>: <strong><%= @comment.user_name %></strong></p>
@@ -13,4 +12,3 @@
 
   <%= I18n.t('controllers.event_mailer.comment.owner') %>
   <h4><%= @event.user.name %></h4>
-<% end %>
