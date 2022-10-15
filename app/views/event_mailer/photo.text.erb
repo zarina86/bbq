@@ -1,0 +1,13 @@
+<%= I18n.t('controllers.event_mailer.photo.title') %>
+-------
+
+<%= I18n.t('controllers.event_mailer.photo.author') %>: <strong><%= @photo.user.name %></strong>
+---------------------
+
+<%= I18n.t('controllers.event_mailer.photo.event') %><%= @event.title %>
+
+<%= I18n.t('controllers.event_mailer.photo.datetime') %><%= l @event.datetime %>
+
+<%= I18n.t('controllers.event_mailer.photo.owner') %><%= @event.user.name %>
+
+

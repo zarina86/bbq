@@ -11,6 +11,7 @@ class PhotosController < ApplicationController
     @new_photo.user = current_user
 
     if @new_photo.save
+      notify_subscribers_photo(@event, @new_photo)
       # Если фотка сохранилась, редиректим на событие с сообщением
       redirect_to @event, notice: I18n.t('controllers.photos.created')
     else
@@ -53,5 +54,18 @@ class PhotosController < ApplicationController
   # c единственным полем photo
   def photo_params
     params.fetch(:photo, {}).permit(:photo)
+  end
+
+  def notify_subscribers_photo(event, photo)
+    recipients = photo.event.subscribers + [photo.event.user]
+    recipients_sorted = recipients.reject! {|user| user == photo.user}
+    # Собираем всех подписчиков и автора события в массив мэйлов, исключаем повторяющиеся
+    all_emails = recipients_sorted.map(&:email) 
+    # По адресам из этого массива делаем рассылку
+    # Как и в подписках, берём EventMailer и его метод photo с параметрами
+    # И отсылаем в том же потоке
+    all_emails.each do |mail|
+      EventMailer.photo(event, photo, mail).deliver_now
+    end
   end
 end

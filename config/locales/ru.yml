@@ -83,6 +83,12 @@ ru:
         event: 'Событие'
         datetime: 'Состоится'
         owner: 'Организатор'
+      photo:
+        title: 'Новое фото'
+        author: 'Автор'
+        event: 'Событие'
+        datetime: 'Состоится'
+        owner: 'Организатор' 
 
   form_errors_count:         
     one: 'В вашей форме %{count} ошибка'
