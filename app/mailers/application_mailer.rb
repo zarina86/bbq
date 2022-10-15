@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: Rails.application.credentials.dig(:mailjet, :sender)
+  default from: 'noreply@bbqev.herokuapp.com'
   layout "mailer"
 end
