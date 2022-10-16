@@ -8,7 +8,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
 
-  before_validation :set_name, on: :create
   validates :name, presence: true, length: {maximum: 35}
 
   after_commit :link_subscriptions, on: :create
@@ -16,10 +15,6 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   private
-
-  def set_name
-    self.name = "Товарисч №#{rand(777)}" if self.name.blank?
-  end
 
   def link_subscriptions
     Subscription.where(user_id: nil, user_email: self.email)
