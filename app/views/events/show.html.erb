@@ -14,7 +14,7 @@
                 "https://yandex.ru/maps/?text=#{@event.address}" %></small></h4>
             <p><%= @event.description %></p>
           </div>
-
+          <!-- <div id="map" data-address= <%= @event.address %> style="width: 600px; height: 400px"></div> -->
           <div class="buffer-top">
             <% if current_user_can_edit?(@event) %>
               <div class="buffer-bottom"> 

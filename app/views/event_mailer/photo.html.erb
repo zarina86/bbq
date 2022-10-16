@@ -6,16 +6,15 @@
 
 <%= I18n.t('controllers.event_mailer.photo.event') %>
 
-<h3><%= @event.title %></h3>
+<h3><%= @photo.event.title %></h3>
 
 <%= I18n.t('controllers.event_mailer.photo.datetime') %>
 
-<h4><%= l @event.datetime %></h4>
+<h4><%= l @photo.event.datetime %></h4>
 
 <%= I18n.t('controllers.event_mailer.photo.owner') %>
 
-<h4><%= @event.user.name %></h4>
-
----------------
+<h4><%= @photo.event.user.name %></h4>
+<br/>
 
 <%= image_tag (@photo.photo.url) %>

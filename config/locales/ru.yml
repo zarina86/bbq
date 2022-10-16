@@ -68,6 +68,7 @@ ru:
       destroyed: 'Вы удалили фотографию'
       error: 'Что-то не так с фотографией'
       destroy_error: 'Вы не можете удалить данную фотографию.'
+      
     event_mailer:
       comment:
         title: 'Новый комментарий'
@@ -75,6 +76,7 @@ ru:
         event: 'Событие'
         datetime: 'Состоится'
         owner: 'Организатор'
+        
       subscription:
         title: 'Новая подписка'
         name: 'Имя'
@@ -83,6 +85,7 @@ ru:
         event: 'Событие'
         datetime: 'Состоится'
         owner: 'Организатор'
+        
       photo:
         title: 'Новое фото'
         author: 'Автор'
@@ -99,7 +102,15 @@ ru:
   exclamation:
     error: 'Ошибка!'
     success: 'Успех!'
-
+  
+  event_mailer:
+    comment:
+      subject: 'Был добавлен новый комментарий  к @ %{title}'
+    photo:
+      subject: 'Добавлено новое фото к @ %{title}'
+    subscriptions:
+      subject: 'Новая подписка на # %{title}'
+      
   check_email: 'Если письмо не пришло, проверьте пожалуйста папку спама.'
   delete_message: 'Вы точно хотите удалить это мероприятие?'
   

@@ -5,10 +5,10 @@
   <hr/>
 
   <%= I18n.t('controllers.event_mailer.comment.event') %>
-  <h3><%= @event.title %></h3>
+  <h3><%= @comment.event.title %></h3>
 
   <%= I18n.t('controllers.event_mailer.comment.datetime') %>
-  <h4><%= l @event.datetime %></h4>
+  <h4><%= l @comment.event.datetime %></h4>
 
   <%= I18n.t('controllers.event_mailer.comment.owner') %>
-  <h4><%= @event.user.name %></h4>
+  <h4><%= @comment.event.user.name %></h4>

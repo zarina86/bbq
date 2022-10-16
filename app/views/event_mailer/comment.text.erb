@@ -6,6 +6,6 @@
   <%= I18n.t('controllers.event_mailer.comment.author') %>: <%= @comment.user_name %>
 
   --------------------------------
-  <%= I18n.t('controllers.event_mailer.comment.event') %>: <%= @event.title %>
-  <%= I18n.t('controllers.event_mailer.comment.datetime') %>: <%= l @event.datetime %>
-  <%= I18n.t('controllers.event_mailer.comment.owner') %>: <%= @event.user.name %>
+  <%= I18n.t('controllers.event_mailer.comment.event') %>: <%= @comment.event.title %>
+  <%= I18n.t('controllers.event_mailer.comment.datetime') %>: <%= l @comment.event.datetime %>
+  <%= I18n.t('controllers.event_mailer.comment.owner') %>: <%= @comment.event.user.name %>
