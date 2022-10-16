@@ -60,7 +60,7 @@ class PhotosController < ApplicationController
     recipients = photo.event.subscribers + [photo.event.user]
     recipients_sorted = recipients.reject! {|user| user == photo.user}
     # Собираем всех подписчиков и автора события в массив мэйлов, исключаем повторяющиеся
-    all_emails = recipients_sorted.map(&:email) 
+    all_emails = (recipients_sorted.map(&:email)).uniq 
     # По адресам из этого массива делаем рассылку
     # Как и в подписках, берём EventMailer и его метод photo с параметрами
     # И отсылаем в том же потоке

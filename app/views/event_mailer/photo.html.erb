@@ -1,7 +1,5 @@
 <h1><%= I18n.t('controllers.event_mailer.photo.title') %></h1>
 
-<%= image_tag (@photo.photo.url) %>
-
 <p><%= I18n.t('controllers.event_mailer.photo.author') %>: <strong><%= @photo.user.name %></strong></p>
 
 <hr/>
@@ -17,3 +15,7 @@
 <%= I18n.t('controllers.event_mailer.photo.owner') %>
 
 <h4><%= @event.user.name %></h4>
+
+---------------
+
+<%= image_tag (@photo.photo.url) %>
