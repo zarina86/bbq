@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
     if current_user_can_edit?(@comment)
       @comment.destroy!
     else
-      message = {alert: I18n.t('controllers.comments.error')}
+      message = { alert: I18n.t('controllers.comments.error') }
     end
   
     redirect_to @event, message
@@ -53,7 +53,6 @@ class CommentsController < ApplicationController
   def notify_subscribers(comment)
     recipients = (comment.event.subscribers + [comment.event.user])
     recipients_sorted = recipients.excluding(comment.user)
-    #recipients_sorted = recipients.reject! {|user| user == comment.user}
     # Собираем всех подписчиков и автора события в массив мэйлов, исключаем повторяющиеся
     all_emails = (recipients_sorted.map(&:email)).uniq 
     # По адресам из этого массива делаем рассылку

@@ -37,7 +37,6 @@ class PhotosController < ApplicationController
   end
 
   private
-
   # Так как фотография — вложенный ресурс, в params[:event_id] рельсы
   # автоматически положат id события, которому принадлежит фотография
   # Это событие будет лежать в переменной контроллера @event
@@ -57,14 +56,13 @@ class PhotosController < ApplicationController
   end
 
   def notify_subscribers_photo(photo)
-    recipients = photo.event.subscribers + [photo.event.user]
-    recipients_sorted = recipients.excluding(photo.user)
+    all_emails = (photo.event.subscriptions.map(&:user_email) + [photo.event.user.email]).uniq
     # Собираем всех подписчиков и автора события в массив мэйлов, исключаем повторяющиеся
-    all_emails = (recipients_sorted.map(&:email)).uniq 
+    all_emails_sorted = all_emails.excluding(photo.user.email)
     # По адресам из этого массива делаем рассылку
     # Как и в подписках, берём EventMailer и его метод photo с параметрами
     # И отсылаем в том же потоке
-    all_emails.each do |mail|
+    all_emails_sorted.each do |mail|
       EventMailer.photo(photo, mail).deliver_now
     end
   end

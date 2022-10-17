@@ -7,5 +7,5 @@
 ----------------------
 
 <%= I18n.t('controllers.event_mailer.subscription.event') %>: <%= @event.title %>
-<%= I18n.t('controllers.event_mailer.subscription.datetime') %>
+<%= I18n.t('controllers.event_mailer.subscription.datetime') %>: <%= @event.datetime %>
 <%= I18n.t('controllers.event_mailer.subscription.owner') %>: <%= @event.user.name %>

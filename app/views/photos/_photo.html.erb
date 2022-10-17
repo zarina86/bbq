@@ -4,8 +4,10 @@
   <%# Показываем не только фотку, но и юзера, который её добавил %>
   Добавил <%= render partial: 'users/user', object: photo.user %>
 </div>
-<div class="buffer-bottom-forms">
-  <%= button_to I18n.t('button.delete'), event_photo_path(photo.event, photo), method: :delete,
-    form: { data: { turbo_confirm: I18n.t('photos.photo.destroy_confirm') }},
-    class: 'btn btn-primary' %>
-</div>
+<% if current_user_can_edit?(photo) %>
+  <div class="buffer-bottom-forms">
+    <%= button_to I18n.t('button.delete'), event_photo_path(photo.event, photo), method: :delete,
+      form: { data: { turbo_confirm: I18n.t('photos.photo.destroy_confirm') }},
+      class: 'btn btn-primary' %>
+  </div>
+<% end %>
