@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=<%= Rails.application.credentials.dig(:yandex, :api_key) %>&lang=ru_RU" type="text/javascript"></script>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>  
-    <!-- <script src="https://api-maps.yandex.ru/2.1/?apikey=66d82f20-f541-4c2d-bccb-e84a3011160f&lang=ru_RU" type="text/javascript"></script> -->
-    <!-- <script src="maps.js" type="text/javascript"></script> -->
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>   
   </head>
 
   <body>

@@ -9,7 +9,7 @@ class PhotosController < ApplicationController
 
     # Проставляем у фотографии пользователя
     @new_photo.user = current_user
-
+    
     if @new_photo.save
       notify_subscribers_photo(@new_photo)
       # Если фотка сохранилась, редиректим на событие с сообщением
@@ -56,7 +56,7 @@ class PhotosController < ApplicationController
   end
 
   def notify_subscribers_photo(photo)
-    all_emails = (photo.event.subscriptions.map(&:user_email) + [photo.event.user.email]).uniq
+    all_emails = photo.event.subscriptions.map(&:user_email).uniq + [photo.event.user.email]
     # Собираем всех подписчиков и автора события в массив мэйлов, исключаем повторяющиеся
     all_emails_sorted = all_emails.excluding(photo.user.email)
     # По адресам из этого массива делаем рассылку
