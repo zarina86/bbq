@@ -2,11 +2,19 @@
 <html>
   <head>
     <title>Bbq</title>
+    
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=<%= Rails.application.credentials.dig(:yandex, :api_key) %>&lang=ru_RU" type="text/javascript"></script>
+   
+    <script 
+      src=<%= "https://api-maps.yandex.ru/2.1/?apikey=#{Rails.application.credentials.dig(:yandex, :api_key)}&lang=ru_RU" %>
+       type="text/javascript">
+    </script>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>   
   </head>
 

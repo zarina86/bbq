@@ -36,8 +36,6 @@ gem "devise", github: "heartcombo/devise", ref: "f8d1ea90bc3"
 
 gem "devise-i18n"
 
-gem "lightbox2-rails"
-
 gem "mailjet"
 
 gem "sassc-rails"
