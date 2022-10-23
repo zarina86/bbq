@@ -180,8 +180,6 @@ GEM
     jmespath (1.6.1)
     jsbundling-rails (1.0.3)
       railties (>= 6.0.0)
-    lightbox2-rails (2.8.2.1)
-      railties (>= 3.1)
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -325,7 +323,6 @@ DEPENDENCIES
   devise-i18n
   fog-aws
   jsbundling-rails
-  lightbox2-rails
   mailjet
   pg (~> 1.1)
   puma (~> 5.0)
