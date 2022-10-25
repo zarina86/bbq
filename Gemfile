@@ -32,7 +32,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 gem "bootsnap" # require: false
 
-gem "devise", github: "heartcombo/devise", ref: "f8d1ea90bc3"
+gem "devise"
 
 gem "devise-i18n"
 
@@ -46,4 +46,8 @@ end
 
 group :development do
   gem "web-console"
+end
+
+group :production do
+  gem "pg", "~> 1.1"
 end
