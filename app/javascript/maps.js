@@ -1,32 +1,37 @@
-ymaps.ready(init);
-var myMap;
+document.addEventListener("turbo:load", () => {
+  ymaps.ready(init);
+  
+  function init(){
+    const Mapnew = document.getElementById("map");
 
-function init(){
-  address = document.getElementById('map').getAttribute('data-address');
+    if (!Mapnew) return false;
 
-  myMap = new ymaps.Map("map", {
-      center: [55.76, 37.64],
+    const address = Mapnew.getAttribute('data-address');
+  
+    const myMap = new ymaps.Map("map", {
+      center: [49.57, 82.37],
       zoom: 10
-  });
+    });
 
-  myGeocoder = ymaps.geocode(address);
+    const myGeocoder = ymaps.geocode(address);
 
-  myGeocoder.then(
-    function (res) {
-      coordinates = res.geoObjects.get(0).geometry.getCoordinates();
+    myGeocoder.then(
+      function (res) {
+        coordinates = res.geoObjects.get(0).geometry.getCoordinates();
 
-      myMap.geoObjects.add(
-          new ymaps.Placemark(
-            coordinates,
-            {iconContent: address},
-            {preset: 'islands#blueStretchyIcon'}
-          )
-      );
+        myMap.geoObjects.add(
+            new ymaps.Placemark(
+              coordinates,
+              {iconContent: address},
+              {preset: 'islands#blueStretchyIcon'}
+            )
+        );
 
-      myMap.setCenter(coordinates);
-      myMap.setZoom(15);
-    }, function (err) {
-      alert('Ошибка при определении местоположения');
-    }
-  );
-}
+        myMap.setCenter(coordinates);
+        myMap.setZoom(15);
+      }, function (err) {
+        alert('Ошибка при определении местоположения');
+      }
+    );
+  }  
+})
