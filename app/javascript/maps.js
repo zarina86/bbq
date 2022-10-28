@@ -4,12 +4,12 @@ document.addEventListener("turbo:load", () => {
   function init(){
     const Mapnew = document.getElementById("map");
 
-    if (!Mapnew) return false;
+    if (Mapnew == null) return false;
 
     const address = Mapnew.getAttribute('data-address');
   
     const myMap = new ymaps.Map("map", {
-      center: [49.57, 82.37],
+      center: [49.97, 82.61],
       zoom: 10
     });
 
