@@ -42,3 +42,7 @@
 /config/credentials/development.key
 
 /config/database.yml
+
+/config/credentials/production.yml.enc
+
+/config/credentials/development.yml.enc
