@@ -46,3 +46,5 @@
 /config/credentials/production.yml.enc
 
 /config/credentials/development.yml.enc
+
+/config/credentials.yml.enc
