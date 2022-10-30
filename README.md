@@ -21,4 +21,6 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+General setup
+
+Generate a new encrypted credentials file: EDITOR=vim rails credentials:edit (Note: You may need to adopt this. Never forget to set the EDITOR env variable)
