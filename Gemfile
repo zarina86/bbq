@@ -38,6 +38,8 @@ gem "devise-i18n"
 
 gem "mailjet"
 
+gem "pundit"
+
 gem "sassc-rails"
 
 group :development, :test do
