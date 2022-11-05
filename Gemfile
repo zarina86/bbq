@@ -40,6 +40,8 @@ gem "mailjet"
 
 gem "pundit"
 
+gem "resque"
+
 gem "sassc-rails"
 
 group :development, :test do
