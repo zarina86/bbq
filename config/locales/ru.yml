@@ -110,7 +110,7 @@ ru:
       subject: 'Был добавлен новый комментарий  к @ %{title}'
     photo:
       subject: 'Добавлено новое фото к @ %{title}'
-    subscriptions:
+    subscription:
       subject: 'Новая подписка на # %{title}'
       
   check_email: 'Если письмо не пришло, проверьте пожалуйста папку спама.'

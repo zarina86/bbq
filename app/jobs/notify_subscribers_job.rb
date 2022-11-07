@@ -11,7 +11,7 @@ class NotifySubscribersJob < ApplicationJob
     when Photo
       all_emails.each { |email| EventMailer.photo(record, email).deliver_later }
     when Subscription
-      EventMailer.subscription(record, email).deliver_later
+      EventMailer.subscription(record).deliver_later
     end
   end
 end
