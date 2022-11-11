@@ -271,6 +271,34 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  if Rails.env.development?
+    config.omniauth :github,
+      Rails.application.credentials.dig(:omniauth, :github_id),
+      Rails.application.credentials.dig(:omniauth, :github_secret),
+      scope: "user:email",
+      redirect_uri: "http://127.0.0.1:3000/users/auth/github/callback"
+    
+    config.omniauth :vkontakte,
+      Rails.application.credentials.dig(:omniauth, :vk_id),
+      Rails.application.credentials.dig(:omniauth, :vk_secret_key),
+      scope: "user:email",
+      redirect_uri: "http:///users/auth/vkontakte/callback"
+  end
+
+  if Rails.env.production?
+    config.omniauth :github,
+      Rails.application.credentials.dig(:omniauth, :github_id),
+      Rails.application.credentials.dig(:omniauth, :github_secret),
+      scope: "user:email",
+      redirect_uri: "http://divinerails.com/users/auth/github/callback"
+
+    config.omniauth :vkontakte,
+      Rails.application.credentials.dig(:omniauth, :vk_id),
+      Rails.application.credentials.dig(:omniauth, :vk_secret_key),
+      token_params: { parse: :json },
+      scope: "email",
+      redirect_uri: "http://divinerails.com/users/auth/vkontakte/callback"             
+  end
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

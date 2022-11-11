@@ -12,6 +12,14 @@ gem "puma", "~> 5.0"
 
 gem "jsbundling-rails"
 
+gem "omniauth"
+
+gem "omniauth-github"
+
+gem "omniauth-vkontakte", "~> 1.7.1"
+
+gem "omniauth-rails_csrf_protection"
+
 gem "turbo-rails"
 
 gem "stimulus-rails"
@@ -57,8 +65,4 @@ group :development do
   gem "capistrano-rbenv", '~> 2.1', '>= 2.1.4'
   gem "capistrano-bundler"
   gem "web-console"
-end
-
-group :production do
-  gem "pg", "~> 1.1"
 end
