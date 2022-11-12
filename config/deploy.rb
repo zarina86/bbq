@@ -7,7 +7,7 @@ set :branch, "main"
 
 set :deploy_to, "/home/deploy/#{fetch :application}"
 
-append :linked_files, 'config/database.yml', 'config/credentials.yml.enc', 'config/master.key', 'config/credentials/production.yml.enc'
+append :linked_files, 'config/database.yml', 'config/credentials.yml.enc', 'config/master.key'
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle',
                            'public/system', 'public/uploads'
 #append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
