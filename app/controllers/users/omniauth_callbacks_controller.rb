@@ -1,11 +1,11 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
    
   def github
-    authorize_service("github")  
+    authorize_service("Github")  
   end
 
   def vkontakte
-    authorize_service("vkontakte")  
+    authorize_service("VK")  
   end
  
 
@@ -25,7 +25,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         reason: "authentication error"
       )
 
-      redirect_to new_user_registration_url
+      redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
     end
+  end
+
+  def failure
+    redirect_to root_path, alert: "Failure. Please try again"
   end
 end

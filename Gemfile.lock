@@ -254,17 +254,17 @@ GEM
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
-    omniauth-github (2.0.1)
+    omniauth-github (2.0.0)
       omniauth (~> 2.0)
-      omniauth-oauth2 (~> 1.8)
-    omniauth-oauth2 (1.8.0)
+      omniauth-oauth2 (~> 1.7.1)
+    omniauth-oauth2 (1.7.3)
       oauth2 (>= 1.4, < 3)
-      omniauth (~> 2.0)
+      omniauth (>= 1.9, < 3)
     omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
-    omniauth-vkontakte (1.8.0)
-      omniauth-oauth2 (>= 1.5, <= 1.8.0)
+    omniauth-vkontakte (1.7.1)
+      omniauth-oauth2 (>= 1.5, <= 1.7.3)
     orm_adapter (0.5.0)
     pg (1.4.3)
     public_suffix (5.0.0)
@@ -430,9 +430,8 @@ DEPENDENCIES
   mailjet
   omniauth
   omniauth-github
-  omniauth-oauth2
   omniauth-rails_csrf_protection
-  omniauth-vkontakte
+  omniauth-vkontakte (~> 1.7.1)
   pg (~> 1.1)
   puma (~> 5.0)
   pundit
