@@ -12,13 +12,13 @@ gem "puma", "~> 5.0"
 
 gem "jsbundling-rails"
 
-gem "omniauth"
+gem "omniauth", "~> 2.1"
 
 gem "omniauth-github"
 
-gem "omniauth-vkontakte", "~> 1.7.1"
+gem "omniauth-vkontakte", "=1.7"
 
-gem "omniauth-rails_csrf_protection"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
 
 gem "turbo-rails"
 
