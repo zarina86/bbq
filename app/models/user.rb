@@ -32,13 +32,14 @@ class User < ApplicationRecord
             when 'github' then URI.parse(access_token.info.image).open
             when 'vkontakte' then URI.parse(access_token.extra.raw_info.photo_400_orig).open
             end
-
+  
     where(uid: uid, provider: provider).first_or_create! do |user|
       user.email = email
       user.password = Devise.friendly_token.first(16)
-      user.name = auth.info.name 
       user.avatar.attach(io: image, filename: 'avatar.jpg')
     end
+
+    image.close
   end
 
   private
