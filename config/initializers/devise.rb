@@ -282,22 +282,19 @@ Devise.setup do |config|
       Rails.application.credentials.dig(:omniauth, :vk_id),
       Rails.application.credentials.dig(:omniauth, :vk_secret_key),
       scope: "user:email",
-      redirect_uri: "http:///users/auth/vkontakte/callback"
+      redirect_uri: "http://users/auth/vkontakte/callback"
   end
 
   if Rails.env.production?
     config.omniauth :github,
       Rails.application.credentials.dig(:omniauth, :github_id),
       Rails.application.credentials.dig(:omniauth, :github_secret),
-      scope: "user:email",
-      redirect_uri: "http://divinerails.com/users/auth/github/callback"
+      scope: "user:email"
 
     config.omniauth :vkontakte,
       Rails.application.credentials.dig(:omniauth, :vk_id),
       Rails.application.credentials.dig(:omniauth, :vk_secret_key),
-      token_params: { parse: :json },
-      scope: "email",
-      redirect_uri: "http://divinerails.com/users/auth/vkontakte/callback"             
+      scope: "email"           
   end
 
   # ==> Warden configuration
