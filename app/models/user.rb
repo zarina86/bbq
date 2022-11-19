@@ -12,12 +12,14 @@ class User < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
   has_many :photos, dependent: :destroy
   
+  has_one_attached :avatar, dependent: :destroy
+
   validates :name, presence: true, length: {maximum: 35}
 
   after_commit :link_subscriptions, on: :create
-  
-  mount_uploader :avatar, AvatarUploader
 
+  
+  #mount_uploader :avatar, AvatarUploader
   
   def self.from_omniauth(access_token)
     email = access_token.info.email

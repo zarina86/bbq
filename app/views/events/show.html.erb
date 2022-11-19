@@ -1,110 +1,78 @@
-<div class="event buffer-top">
-  <div class="event-info row">
-    <div class="col-md-12">
-      <%= content_tag 'div', '', 
-        class: 'event-background',
-        style: "background-image: url(#{event_photo(@event)})"%>
-      
-      <div class="event-info-inner row">
-        <div class="col-md-6">
-          <div class="event-description">
-            <h1><%= @event.title %></h1>
-            <h3><%= I18n.l(@event.datetime, format: :short) %></h3>
-            <h4><small><%= link_to @event.address,
-                "https://yandex.ru/maps/?text=#{@event.address}" %></small></h4>
-            <p><%= @event.description %></p>
-          </div>
-                  
-          <div class="buffer-top">
-            <% if current_user_can_edit?(@event) %>
-              <div class="buffer-bottom"> 
-                <div class="btn-group">
-                  <div class="col-sm-7"> 
-                    <%= link_to I18n.t("button.edit"), edit_event_path(@event),
-                      class: 'btn btn-primary' %>
-                  </div>
-                  <div class="col-sm-7">                  
-                    <%= button_to I18n.t("button.delete"), event_path(@event), method: :delete,
-                      form: { data: { turbo_confirm: I18n.t(:delete_message) }},
-                      class: 'btn btn-primary' %>
-                  </div>
-                </div>
-              </div>                
-            <% end %>
-          </div>
-        </div>
-      </div>
+<div class="card my-5">
+  <%= image_tag event_photo(@event), alt: "", class: "card-img-top" %>
+
+  <div class="card-body">
+    <div class="card-text text-center">
+      <h1><%= @event.title %></h1>
+      <h3><%= l @event.datetime, format: :short %></h3>
+      <h3><small><%= link_to @event.address, "https://yandex.ru/maps/?text=#{@event.address}" %></small></h3>
+      <p><%= @event.description %></p>
+    </div>
+
+    <div class="my-4 d-flex align-items-center justify-content-center">
+      <% if current_user_can_edit?(@event) %>
+        <%= link_to I18n.t("button.edit"), edit_event_path(@event),
+          class: 'btn btn-primary me-1' %>
+        <%= button_to I18n.t("button.delete"), event_path(@event), method: :delete,
+            form: { data: { turbo_confirm: I18n.t(:delete_message) }}, class: 'btn btn-danger ms-1' %>                       
+      <% end %>
     </div>
   </div>
-  
-  <div class="row">
-    <div class=col-md-8>
-      <div class="buffer-bottom">
-        <div id="map" 
-          data-address="<%= @event.address %>" class="map-container">
-        </div>
-      </div>
-    </div> 
-  </div> 
-  
+
+  <div id="map" 
+    data-address="<%= @event.address %>" class="mb-2 w-100" style="height: 400px">
+  </div>
+</div>
+
+<div class="row">
   <div class="col-md-12">
     <div class="d-flex  justify-content-start">
       <%= render partial: 'photos/photo', collection: @event.photos.except(@new_photo) %>
     </div>
   </div>
 
-  <div class="d-flex justify-content-between w-100">
-    <div class="row">
-      <div class="col-md-12 col-sm-6">
-        <div>
-          
-          <div>
-            <%= render partial: 'photos/form', 
-              locals: {photo: @new_photo || @event.photos.build} %>
-          </div>
-        </div>
-        <div class="buffer-top">
-          <h4 class="text-center"><small>Написать комментарий:</small></h4>
-          <%= render partial: 'comments/form',
-            locals: {comment: @new_comment || @event.comments.build} %>
-      
-          <div class="buffer-both">
-            <h4 class="text-center"><small>Комментарии:</small></h4>
-            <%= render partial: 'comments/comment', 
-              collection: @event.comments.except(@new_comment) %>
-          </div>
-        </div>   
+  <div class="col-md-12 col-sm-6">
+      <div>
+        <%= render partial: 'photos/form', 
+          locals: {photo: @new_photo || @event.photos.build} %>
       </div>
-    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="container mt-2">
+      <div>
+        <h4 class="text-center"><small>Написать комментарий:</small></h4>
+        <%= render partial: 'comments/form',
+          locals: {comment: @new_comment || @event.comments.build} %>
+      </div>
+
+      <div class="mt-5">
+        <h4 class="text-center"><small>Комментарии:</small></h4>
+        <%= render partial: 'comments/comment', 
+          collection: @event.comments.except(@new_comment) %>
+      </div>
+    </div>   
+  </div>
  
-    <div class="row">
-      <div class="col-md-9">
-        <div class="buffer-top">
-          <div class>
-            <h4 class="text-center"><small>Зовет:</small></h4>
-            <p class="text-center"><%= render partial: 'users/user', object: @event.user %></p>
-          </div>
-          <div class>
-            <h4 class="text-center"><small>Пойдут:</small></h4>
-            <div>
-              <p>
-                <%= render partial: 'subscriptions/subscription',
-                  collection: @event.subscriptions.except(@new_subscription) %>
-              </p>
-            </div>
-          </div>
-          <% unless current_user_can_edit?(@event) %>
-            <div class>
-              <h4 class="text-center"><small>Я пойду:</small></h4>
-              <div>
-                <%= render partial: 'subscriptions/form', locals: {
-                  subscription: @new_subscription || @event.subscriptions.build
-                } %>
-              </div>
-            </div> 
-          <% end %>
-        </div>
-      </div>
+  <div class="col-md-4">
+    <div class="container">
+      <h4 class="text-center"><small>Зовет:</small></h4>
+      <p class="text-center"><%= render partial: 'users/user', object: @event.user %></p>
     </div>
+
+    <div class="container mt-2">
+      <h4 class="text-center"><small>Пойдут:</small></h4>
+      <p><%= render partial: 'subscriptions/subscription',
+          collection: @event.subscriptions.except(@new_subscription) %></p>
+    </div>
+
+    <% unless current_user_can_edit?(@event) %>
+        <h4 class="text-center"><small>Я пойду:</small></h4>
+        <%= render partial: 'subscriptions/form', locals: {
+          subscription: @new_subscription || @event.subscriptions.build
+        } %>    
+    <% end %>
   </div>
 </div>

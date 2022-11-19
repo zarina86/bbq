@@ -4,9 +4,11 @@
     <%# Показываем не только фотку, но и юзера, который её добавил %>
      
     <%= render partial: 'users/user', object: photo.user %>
-    <div id = "lightgallery">
-      <%= link_to image_tag(photo.photo.thumb.url), photo.photo.url, 
-        data: { turbo: false, toggle: 'lightbox'} %>
+    <div>
+      <% if photo.photo.attached? %>
+        <%= link_to image_tag(photo.photo.variant(resize_to_fill: [150, 150])), url_for(photo.photo), locals: { photo: photo }, 
+        data: { turbo: false } %>
+      <% end %>
     </div>
       <% if current_user_can_edit?(photo) %>
         <div class="buffer-bottom-forms">
@@ -15,7 +17,5 @@
           class: 'btn btn-primary' %>
         </div>
       <% end %>
-    
-  
-      
+    </div>
 </div>
