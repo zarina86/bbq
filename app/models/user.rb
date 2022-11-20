@@ -18,18 +18,19 @@ class User < ApplicationRecord
 
   after_commit :link_subscriptions, on: :create
 
-  
-  #mount_uploader :avatar, AvatarUploader
-  
   def self.from_omniauth(auth)
     user = where(email: auth.info.email).first
 
     return user if user.present?
+
+    image_src = case auth.provider
+                when 'github' then URI.parse(auth.info.image).open
+                when 'vkontakte' then URI.parse(auth.extra.raw_info.photo_400_orig).open
+                end
   
     where(uid: auth.uid, provider: auth.provider).first_or_create! do |user|
       user.email = auth.info.email
       user.name = auth.info.name
-      image_src = URI.parse(response.info.image).open
       user.avatar.attach(io: image_src, filename: 'avatar.png')
       image_src.close
 
