@@ -134,7 +134,11 @@ ru:
   app:
     name: 'Шашлыки'
     company: 'Хороший программист'
-  
+
+  events:
+    photos:
+      added: 'Добавил'
+      
   comments:
     comment:
       destroy_confirm: 'Вы уверены, что хотите удалить этот комментарий?'

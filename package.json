@@ -10,7 +10,6 @@
     "bootstrap-icons": "^1.9.1",
     "esbuild": "^0.15.7",
     "jquery": "^3.6.1",
-    "lightgallery.js": "^1.4.0",
     "sass": "^1.54.9",
     "swiper.js": "^1.0.0"
   },

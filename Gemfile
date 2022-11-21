@@ -26,10 +26,6 @@ gem "stimulus-rails"
 
 gem "cssbundling-rails"
 
-gem "carrierwave"
-
-gem "carrierwave-aws"
-
 gem "aws-sdk-rails"
 
 gem "aws-sdk-s3", require: false
