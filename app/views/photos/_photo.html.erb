@@ -1,20 +1,14 @@
-<div class="buffer-bottom-forms">
-  
-    <%# Показываем не только фотку, но и юзера, который её добавил %>
-     
-    <%= render partial: 'users/user', object: photo.user %>
-    <div>
-      <% if photo.photo.attached? %>
-        <%= link_to image_tag(photo.photo.variant(resize_to_fill: [150, 150])), url_for(photo.photo), locals: { photo: photo }, 
-        data: { turbo: false } %>
-      <% end %>
-    </div>
-      <% if current_user_can_edit?(photo) %>
-        <div class="buffer-bottom-forms">
-        <%= button_to I18n.t('button.delete'), event_photo_path(photo.event, photo), method: :delete,
-          form: { data: { turbo_confirm: I18n.t('photos.photo.destroy_confirm') }},
-          class: 'btn btn-primary' %>
-        </div>
-      <% end %>
-    </div>
-</div>
+<% button_delete = button_to  I18n.t('button.delete'),
+                                 event_photo_path(photo.event, photo),
+                                 class: "btn btn-link",
+                                 method: :delete,
+                                 form: { data: { turbo_confirm: I18n.t('photos.photo.destroy_confirm') } }%>
+<% title = "Добавил #{photo.user.name}" %>
+<% link = url_for(photo.photo.variant(resize_to_fill: [600, 400])) %>
+
+<% if current_user_can_edit?(photo) %>
+  <% title << "#{button_delete}"%>
+<% end %>
+
+<%= link_to image_tag(photo.photo.variant(resize_to_fill: [150, 150]),
+   class: "lightboxed", rel: "group", data: { caption: title, link: link }) %>
