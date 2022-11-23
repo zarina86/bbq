@@ -1,4 +1,4 @@
-<div class="event">
+<div class="event buffer-top">
   <div class="event-info row mb-4">
     <div class="col-md-12">
       <%= content_tag 'div', '', class: 'event-background',
@@ -14,58 +14,72 @@
             <p><%= @event.description %></p>
           </div>
           
+          <div class="buffer-top">
           <% if current_user_can_edit?(@event) %>
-            <div class="row justify-content-start">
-              <div class="col-auto my-3">
-                <%= link_to I18n.t("button.edit"), edit_event_path(@event),
-                  class: 'btn btn-primary me-1' %>
+            <div class="buffer-bottom"> 
+              <div class="btn-group">
+                <div class="col-sm-7"> 
+                  <%= link_to I18n.t("button.edit"), edit_event_path(@event),
+                    class: 'btn btn-primary' %>
+                </div>
+                <div class="col-sm-7">                  
+                  <%= button_to I18n.t("button.delete"), event_path(@event), method: :delete,
+                    form: { data: { turbo_confirm: I18n.t(:delete_message) }},
+                    class: 'btn btn-primary' %>
+                </div>
               </div>
-              <div class="col-auto my-3">
-                <%= button_to I18n.t("button.delete"), event_path(@event),
-                  method: :delete, form: { data: { turbo_confirm: I18n.t(:delete_message) }},
-                  class: 'btn btn-danger ms-1' %> 
-              </div> 
-            </div>                     
+            </div>                
           <% end %>
-        </div>        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-5">
-    <div class="col-md-8">
-      <div class="row">
-        <% if @event.photos.exists? %>
-          <h4 class="text-center"><small>Photo:</small></h4>
-          <div class="event-gallery">
-            <%= render partial: 'photos/photo', collection: @event.photos.except(@new_photo) %> 
-          </div>
-        
-          <% end %>
-      </div>
-      <div>
-        <% if current_user %>
-          <%= render partial: 'photos/form', 
-            locals: {photo: @new_photo || @event.photos.build} %>
-        <% end %>
-      </div>
-      <div class="event-comments mt-3">
-        <h4 class="text-center"><small>Написать комментарий:</small></h4>
-        <%= render partial: 'comments/form',
-           locals: { comment: @new_comment || @event.comments.build } %>
-        <div class="mt-5">
-          <%= render partial: 'comments/comment', collection: @event.comments.except(@new_comment) %>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="event-owner">
-        <h4 class="text-center"><small>Зовет:</small></h4>
-        <p><%= render partial: 'users/user', object: @event.user %></p>
+  </div>
+</div>
+<div class="row">
+  <div class=col-md-8>
+    <div class="buffer-bottom">
+      <div id="map" 
+        data-address="<%= @event.address %>" 
+        style="width: 800px; height: 600px">
       </div>
-      <% if @event.subscriptions.present? %>
-        <div class="event-subscriptions">
-        <h4 class="text-center"><small>Пойдут:</small></h4>
+    </div>
+  </div> 
+</div> 
+<div class="d-flex justify-content-between w-100">
+  <div class="row">
+    <div class="col-md-12 col-sm-6">
+      <div>
+        <div>
+          <%= render partial: 'photos/photo', collection: @event.photos.except(@new_photo) %>
+        </div>
+        <div>
+          <%= render partial: 'photos/form', 
+            locals: {photo: @new_photo || @event.photos.build} %>
+        </div>
+      </div>
+      <div class="buffer-top">
+        <h4 class="text-center"><small>Написать комментарий:</small></h4>
+        <%= render partial: 'comments/form',
+          locals: {comment: @new_comment || @event.comments.build} %>
+    
+        <div class="buffer-both">
+          <h4 class="text-center"><small>Комментарии:</small></h4>
+          <%= render partial: 'comments/comment', 
+            collection: @event.comments.except(@new_comment) %>
+        </div>
+      </div>   
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-9">
+      <div class="buffer-top">
+        <div class>
+          <h4 class="text-center"><small>Зовет:</small></h4>
+          <p class="text-center"><%= render partial: 'users/user', object: @event.user %></p>
+        </div>
+        <div class>
+          <h4 class="text-center"><small>Пойдут:</small></h4>
           <div>
             <p>
               <%= render partial: 'subscriptions/subscription',
@@ -73,18 +87,18 @@
             </p>
           </div>
         </div>
-      <% end %>
-      <% unless current_user == @event.user %>
-        <div class="event-subscription-form">
-          <div>
-            <%= render partial: 'subscriptions/form',
-             locals: { subscription: @new_subscription || @event.subscriptions.build } %>
-          </div>
-        </div>
-      <% end %>
+        <% unless current_user_can_edit?(@event) %>
+          <div class>
+            <h4 class="text-center"><small>Я пойду:</small></h4>
+            <div>
+              <%= render partial: 'subscriptions/form', locals: {
+                subscription: @new_subscription || @event.subscriptions.build
+              } %>
+            </div>
+          </div> 
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div id="map" data-address="<%= @event.address %>" style="width: 100%; height: 400px;"></div>
-  </div>
+</div>
 </div>
